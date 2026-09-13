@@ -52,5 +52,9 @@ def clean_data(dataframe):
 
     #drop na
     df = df.dropna(subset=["code insee", "code Departement"])
+
+    #duplicate row
+    df=df.drop_duplicates(subset=["code insee"])
+
     return df
 
