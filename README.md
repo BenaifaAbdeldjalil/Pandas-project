@@ -39,7 +39,7 @@ pip install -r requirements.txt
    data/final/
    src/
    ```
-   
+
 New-Item -ItemType Directory -Path data
 New-Item -ItemType Directory -Path src
 New-Item -ItemType Directory -Path data/raw/
@@ -79,6 +79,9 @@ clé, qui expose les communes de l'INSEE.
 ❓ **Questions à te poser** (essentielles pour bien comprendre, pas juste faire) :
 - Que se passe-t-il si le serveur ne répond pas (pas de connexion) ? Comment le voir dans ton code ?
 - Pourquoi est-ce important de ne jamais modifier les données dans `data/raw/` ?
+
+
+ni test_api.py
 
 ✅ **Checkpoint** : le fichier `data/raw/communes_raw.json` existe et contient
 environ 35 000 objets.
