@@ -20,7 +20,9 @@ print("\nContenu actuel :", os.listdir())
 
 files = ["data/processed/test.txt","data/raw/test.txt",
          "scripts/01_download_data.py","scripts/02_clean_data.py",
-         "scripts/03_split_by_departement.py","scripts/04_stats_departements.py"]
+         "scripts/03_split_by_departement.py","scripts/04_stats_departements.py",
+         "src/clean.py","src/download.py",
+         "src/split_dept.py"]
 # 2) Créer test.txt dans data/processed
 for fi in files:
     file = base/fi
