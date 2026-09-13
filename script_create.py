@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 folders = ["data","scripts","src","data/raw/","docs","data/processed/"
-           ,"data/final/","data/final/by_departement/"]
+           ,"data/final/","data/final/by_departement/","data/interim/"]
 
 base = Path(".")  # dossier courant
 
