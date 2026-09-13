@@ -18,9 +18,12 @@ for f in folders:
 
 print("\nContenu actuel :", os.listdir())
 
-
+files = ["data/processed/test.txt","data/raw/test.txt"]
 # 2) Créer test.txt dans data/processed
-fichier = base / "data/processed/test.txt"
-fichier.write_text("Hello\n", encoding="utf-8")
-
-print(f"✅ Fichier créé : {fichier.resolve()}")
+for fi in files:
+    file = base/fi
+    if file.exists():
+        print(f"⏭️  Le fichier { file } existe déjà")
+    else:
+        file.write_text("Hello\n", encoding="utf-8")
+        print(f"✅ Fichier créé : { file.resolve() }")
