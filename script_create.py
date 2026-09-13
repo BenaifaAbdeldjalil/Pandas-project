@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-folders = ["data","scripts","src","data/raw/","data/processed/","data/final/"]
+folders = ["data","scripts","src","data/raw/","docs","data/processed/","data/final/"]
 
 base = Path(".")
 
