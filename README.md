@@ -20,7 +20,18 @@ s'appuie sur le précédent.
 
 1. Crée un dossier vide pour ton projet.
 2. Crée un environnement virtuel Python et active-le.
+## 🚀 Démarrage rapide
+
+```bash
+# 1. Créer un environnement virtuel
+python -m venv venv
+source venv/bin/activate      # sous Windows : venv\Scripts\activate
+
 3. Installe seulement `pandas` et `requests` pour l'instant (`pip install pandas requests`).
+
+# 2. Installer les dépendances
+pip install -r requirements.txt
+
 4. Crée à la main cette arborescence (juste les dossiers, vides pour l'instant) :
    ```
    data/raw/
@@ -28,6 +39,13 @@ s'appuie sur le précédent.
    data/final/
    src/
    ```
+   
+New-Item -ItemType Directory -Path data
+New-Item -ItemType Directory -Path src
+New-Item -ItemType Directory -Path data/raw/
+New-Item -ItemType Directory -Path data/processed/
+New-Item -ItemType Directory -Path data/final/
+
 5. Initialise un dépôt git (`git init`) et crée un `.gitignore` qui exclut au
    moins ton environnement virtuel.
 
