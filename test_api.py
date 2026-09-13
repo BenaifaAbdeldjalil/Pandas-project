@@ -1,19 +1,8 @@
 import requests
 import json
+import pandas as pd
 
-url = "https://geo.api.gouv.fr/communes?fields=nom,code,codeDepartement,population"
-try:
-    response = requests.get(url, timeout=30)
-    response.raise_for_status() 
-        # Vérifier que la requête a réussi
-    if response.raise_for_status() is None:
-        data = response.json()
+df = pd.read_json("data/raw/communes_raw.json")
 
-            # Écrire directement la réponse JSON dans un fichier
-        with open("data/raw/communes_raw.json", "w", encoding="utf-8") as f:
-            json.dump(response.json(), f, indent=4, ensure_ascii=False)
-                
-except:
-        print("error")
-
+print(df)
 
