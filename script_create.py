@@ -7,7 +7,7 @@ base = Path(".")
 
 
 base = Path(".")  # dossier courant
-
+# 1) folders creation
 for f in folders:
     path = base / f
     if not path.exists():
@@ -23,7 +23,7 @@ files = ["data/processed/test.txt","data/raw/test.txt",
          "scripts/03_split_by_departement.py","scripts/04_stats_departements.py",
          "src/clean.py","src/download.py",
          "src/split_dept.py"]
-# 2) Créer test.txt dans data/processed
+# 2) files creation
 for fi in files:
     file = base/fi
     if file.exists():
