@@ -83,6 +83,8 @@ clé, qui expose les communes de l'INSEE.
 
 ni test_api.py
 
+ni download_communes.py
+
 ✅ **Checkpoint** : le fichier `data/raw/communes_raw.json` existe et contient
 environ 35 000 objets.
 
