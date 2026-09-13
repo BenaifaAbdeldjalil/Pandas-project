@@ -1,31 +1,19 @@
-import requests
+import pandas as pd
 import json
+from pathlib import Path
 
-url = "https://geo.api.gouv.fr/communes"
-base="data/raw/"
 
-FIELDS = [
-    "nom",
-    "code",
-    "codeDepartement",
-    "codeRegion",
-    "population",
-    "surface",
-    "codesPostaux",
-    "siren",
-]
+f=Path("data/raw/communes_raw.json")
 
-params = {
-    "fields": ",".join(FIELDS),   # liste → "nom,code,codeDepartement"
-    "format": "json",
-     "zone": "metro,drom,com",     # métropole + DROM + COM
-    }
+                      # Écrire directement la réponse JSON dans un fichier
+with open(f, "r", encoding="utf-8") as f:
+                
+                data=json.load(f)
+
+data_normalise=pd.json_normalize(data)
+print(data_normalise)
 
 
 
-response = requests.get(url, params=params, timeout=30)
-            # Vérifier que la requête a réussi
-if response.raise_for_status() is None:
-                # Écrire directement la réponse JSON dans un fichier
-    with open(f"{base}communes_raw.json", "w", encoding="utf-8") as f:
-        json.dump(response.json(), f, indent=4, ensure_ascii=False)
+
+
