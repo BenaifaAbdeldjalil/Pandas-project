@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-folders = ["data","src","data/raw/","data/processed/","data/final/"]
+folders = ["data","scripts","src","data/raw/","data/processed/","data/final/"]
 
 base = Path(".")
 
@@ -18,7 +18,9 @@ for f in folders:
 
 print("\nContenu actuel :", os.listdir())
 
-files = ["data/processed/test.txt","data/raw/test.txt"]
+files = ["data/processed/test.txt","data/raw/test.txt",
+         "scripts/01_download_data.py","scripts/02_clean_data.py",
+         "scripts/03_split_by_departement.py","scripts/04_stats_departements.py"]
 # 2) Créer test.txt dans data/processed
 for fi in files:
     file = base/fi
