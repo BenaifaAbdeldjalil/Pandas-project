@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 from pathlib import Path
+import numpy as np
 
 
 def load_data(path:Path):
@@ -76,6 +77,26 @@ def duplicale_data(dataframe):
 
     return df
 
+def calculate_data(dataframe):
+    df =dataframe
+    #
+    df["population"]=pd.to_numeric(df["population"],errors="coerce")
+    df["surface"] = pd.to_numeric(df["surface"],errors="coerce")
+    df["density"]=df["population"]/df["surface"] 
+
+    return df
+
+
+def cp_data(dataframe):
+    df =dataframe
+    df["cp"] = np.where(
+    df["code Postal 2"] < 96000,
+    df["code Postal"].str[:2],
+    df["code Postal"].str[:3]
+)
+    return df
+
+
 def clean_data(f):
      dataframe=load_data(f)
      dataframe=fill_data(dataframe)
@@ -84,4 +105,7 @@ def clean_data(f):
      dataframe=convert_data(dataframe)
      dataframe=null_data(dataframe)
      dataframe=duplicale_data(dataframe)
+     dataframe=calculate_data(dataframe)
+     dataframe=cp_data(dataframe)
+     print(dataframe)
      return dataframe
