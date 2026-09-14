@@ -11,15 +11,14 @@ sys.path.append(str(Path(__file__).resolve().parents[1]))
 # Permet d'importer le package src/ depuis n'importe où
 sys.path.append(str(Path(__file__).resolve().parents[1]))
 
-from src.clean import load_data,clean_data
+from src.clean import clean_data
 
 
 f=Path("data/raw/communes_raw.json")
 
 
 def main():
-    df = load_data(f)
-    clean_data(df)
+    clean_data(f)
 
 
 if __name__ == "__main__":
