@@ -14,7 +14,8 @@ df=pd.json_normalize(data)
 #print(df)
 
 df=df[:10].copy()
-df["code Postal"]=df["code Postal"].astype(str).str.strip().str.zfill(5)
+print(df.columns)
+df["code Postal"]=df["codesPostaux"].astype(str).str.strip().str.zfill(5)
 df["code Postal"]=df["code Postal"].str.replace("[^0-9]","",regex=True)
 df["code Postal 2"]=pd.to_numeric(df["code Postal"])
 
@@ -26,4 +27,20 @@ df["cp"] = np.where(
     df["code Postal"].str[:3]
 )
 
-print(df)
+print(df.columns)
+
+stats = (
+    df.groupby("cp")
+    .agg(
+        nb_communes=("code", "count"),
+        population_totale=("population", "sum"),
+        surface_totale_km2=("surface", "sum"),
+    )
+    .reset_index()
+)
+stats["densite_hab_km2"] = (
+    stats["population_totale"] / stats["surface_totale_km2"]
+).round(1)
+stats = stats.sort_values("cp").reset_index(drop=True)
+
+print(stats)
