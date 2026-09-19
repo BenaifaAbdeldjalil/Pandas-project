@@ -88,13 +88,18 @@ def calculate_data(dataframe):
 
 
 def cp_data(dataframe):
-    df =dataframe
-    df["cp"] = np.where(
-    df["code Postal 2"] < 96000,
-    df["code Postal"].str[:2],
-    df["code Postal"].str[:3]
-)
-    return df
+     df =dataframe
+     df["code Postal"]=df["code Postal"].astype(str).str.strip().str.zfill(5)
+     df["code Postal"]=df["code Postal"].str.replace("[^0-9]","",regex=True)
+     df["code Postal 2"]=pd.to_numeric(df["code Postal"])
+     #duplicate 
+     df["cp"] = np.where(
+          df["code Postal 2"] < 96000,
+          df["code Postal"].str[:2],
+          df["code Postal"].str[:3]
+          )
+     return df
+
 
 
 def clean_data(f):
@@ -108,4 +113,5 @@ def clean_data(f):
      dataframe=calculate_data(dataframe)
      dataframe=cp_data(dataframe)
      print(dataframe)
+
      return dataframe

@@ -14,7 +14,7 @@ df=pd.json_normalize(data)
 #print(df)
 
 df=df[:10].copy()
-df["code Postal"]=df["codesPostaux"].astype(str).str.strip().str.zfill(5)
+df["code Postal"]=df["code Postal"].astype(str).str.strip().str.zfill(5)
 df["code Postal"]=df["code Postal"].str.replace("[^0-9]","",regex=True)
 df["code Postal 2"]=pd.to_numeric(df["code Postal"])
 
