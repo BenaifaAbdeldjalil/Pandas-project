@@ -12,11 +12,10 @@ watch for. Read it in order: each module builds on the previous one.
 2. [Step 1 — Downloading the data (`src/download.py`)](#2-step-1--downloading-the-data)
 3. [Step 2 — Cleaning the data (`src/clean.py`)](#3-step-2--cleaning-the-data)
 4. [Step 3 — Splitting by department (`src/split_dept.py`)](#4-step-3--splitting-by-department)
-5. [Step 4 — Statistics by department (`src/stats.py`)](#5-step-4--statistics-by-department)
-6. [Why this architecture?](#6-why-this-architecture)
-7. [Verifying everything works](#7-verifying-everything-works)
-8. [Common errors and fixes](#8-common-errors-and-fixes)
-9. [Going further](#9-going-further)
+5. [Why this architecture?](#6-why-this-architecture)
+6. [Verifying everything works](#7-verifying-everything-works)
+7. [Common errors and fixes](#8-common-errors-and-fixes)
+8. [Going further](#9-going-further)
 
 ---
 
@@ -154,9 +153,6 @@ code. We get for example `75.csv` (Paris, 1 row), `13.csv`
 
 ## 5. Step 4 — Statistics by department
 
-**Script:** `python scripts/04_stats_departements.py`
-**Reusable module:** `src/stats.py`
-
 We use pandas `groupby().agg()` aggregation:
 
 ```python
@@ -169,8 +165,6 @@ df.groupby("code_departement").agg(
 
 Then we derive **density** in inhabitants/km² (careful: `surface_ha` is in
 hectares, so `km² = ha / 100`).
-
-Output: `data/final/stats_departements.csv`.
 
 ---
 
